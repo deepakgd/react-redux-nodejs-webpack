@@ -10,10 +10,10 @@ if (module.hot) {
     window.addEventListener('message', console.clear());
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
-// ReactDOM.render(
-//     <Provider store={configureStore()}>
-//       <App />
-//     </Provider>,
-//     document.getElementById('root')
-// )
+// ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={configureStore()}>
+      <App />
+    </Provider>,
+    document.getElementById('root')
+)
