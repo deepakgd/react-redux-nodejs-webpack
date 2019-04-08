@@ -28,5 +28,28 @@ module.exports = {
             if(error) return reject({ status: 500, error });
             resolve(response)
         }) 
-    } 
+    },
+    /**
+     * updateTodo - update todo item by _id
+     * @param {OBJECT} body - contains title, description, priority and status of todo item 
+     * @param {STRING} id - todo id
+     */
+    updateTodo: function(body, id){
+        return new Promise(async (resolve, reject) => {
+            let [error, response] = await to(models.todos.findOneAndUpdate({ _id: id }, { $set: only(body, 'title description priority status') }));
+            if(error) return reject({ status: 500, error });
+            resolve({ message: "Todo updated successfully", response })
+        })
+    },
+    /**
+     * deleteTodo - delete todo item by id
+     * @param {STRING} id - todo item objectId 
+     */
+    deleteTodo: function(id){
+        return new Promise(async (resolve, reject) => {
+            let [error, response] = await to(models.todos.findByIdAndRemove(id));
+            if(error) return reject({ status: 500, error });
+            resolve({ message: "Todo deleted successfully", response })
+        })
+    }
 }

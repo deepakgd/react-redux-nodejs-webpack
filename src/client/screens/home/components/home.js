@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 export default class Home extends Component{
     render(){
         return (
-            <div>
-                <div>Home Component</div>
-                <Link to="/about">About</Link>
+            <div className="container">
+                    <h1 >Home Component</h1>
+                    <Link to="/about">About</Link>
             </div>
         )
     }
