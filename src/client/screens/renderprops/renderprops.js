@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import Toggle from '../../components/Toggle';
 import ToggleRenderProps from '../../components/ToggleRenderProps';
+import ToggleChildrenRenderProps from '../../components/ToggleChildrenRenderProps';
+import FragmentTest from '../../components/FragmentTest';
+import Portal from '../../components/Portal';
 
 export default class RenderProps extends Component{
     constructor(props){
@@ -33,6 +36,7 @@ A component with a render prop takes a function that returns a React element and
                 </div>
                 
                 <div>
+                    <h2>Render props</h2>
                     we can send some other template also in tooglerender props like below
 
                     <ToggleRenderProps render={()=>(
@@ -46,6 +50,45 @@ A component with a render prop takes a function that returns a React element and
                         </ul>
                     )} />
                 </div>
+
+                <div>
+                    <h2>Children Render Props</h2>
+                    <ToggleChildrenRenderProps>
+                        {({on, toggle, message})=>(
+                            <div>
+                                {on && message}
+                                <button onClick={toggle}>Show/Hide</button>
+                            </div>
+                        )}
+                    </ToggleChildrenRenderProps>
+                </div>
+
+                <Fragment>
+                    <h2>Fragment</h2>
+                    <FragmentTest />
+                </Fragment>
+
+                <Fragment>
+                    <hr />
+                    <h2>Portal with plain text</h2>
+                    <Portal>Printing from portal</Portal>
+                </Fragment>
+
+                <Fragment>
+                    <hr />
+                    <h2>Portal - accessing variable</h2>
+                    <ToggleChildrenRenderProps>
+                        {({on, toggle, message})=>(
+                            <div>
+                                <p>we are trying to access variable inside portal</p>
+                                {on && message} - normal message from ToggleChildrenRenderProps
+                                
+                                <Portal>{on && message} - same message accessing inside portal</Portal>
+                            </div>
+                        )}
+                    </ToggleChildrenRenderProps>
+                    
+                </Fragment>
             </div>
         )
     }

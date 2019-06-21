@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class ToggleRenderProps extends Component {
+export default class ToggleChildrenRenderProps extends Component {
 
     constructor(props){
         super(props);
@@ -18,11 +18,11 @@ export default class ToggleRenderProps extends Component {
     }
 
     render() {
-        const { render } = this.props;
+        const { children } = this.props;
 
         return (
             <div>
-                {render({ toggle: this.toggle, on: this.state.on, message: "Hello" })}
+                {children({ toggle: this.toggle, on: this.state.on, message: "Hello world" })}
                 <hr />
             </div>
         )

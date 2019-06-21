@@ -37,6 +37,9 @@ export default class App extends Component {
                 <li className="nav-item">
                   <Link to="/about" className="nav-link">About</Link>
                 </li>
+                <li className="nav-item">
+                  <Link to="/renderprops" className="nav-link">Render props & fragment</Link>
+                </li>
               </ul>
             </div>
           </nav>
